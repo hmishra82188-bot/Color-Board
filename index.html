@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Plate Maker</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #ccc;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        
+
+        .nameplate {
+            background: blue;
+            color: white;
+            padding: 35px 15px;
+            margin: 25px 0;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .nameplate h2 {
+            margin: 0;
+            font-size: 30px;
+            overflow-wrap: anywhere;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        h3 {
+            margin: 20px 0 10px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #666;
+        }
+
+        .reset {
+            background: #d62828;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Color Board</h1>
+        <div class="nameplate" id="nameplate">
+            <h2 id="plateText">Your Name</h2>
+        </div>
+
+        <input
+            type="text"id="nameInput"placeholder="Enter your name">
+
+        <h3>Box Color</h3>
+
+        <button onclick="changeBox('red')">Red</button>
+        <button onclick="changeBox('blue')">Blue</button>
+        <button onclick="changeBox('green')">Green</button>
+        <button onclick="changeBox('yellow')">Yellow</button>
+        <button onclick="changeBox('black')">Black</button>
+
+        <h3>Writing Color</h3>
+
+        <button onclick="changeTextColor('white')">White</button>
+        <button onclick="changeTextColor('black')">Black</button>
+        <button onclick="changeTextColor('red')">Red</button>
+        <button onclick="changeTextColor('blue')">Blue</button>
+
+        <h3>Text Style</h3>
+
+        <button onclick="changeFont('Arial')">Arial</button>
+        <button onclick="changeFont('Verdana')">Verdana</button>
+        <button onclick="changeFont('sans-serif')">sans-serif</button>
+        
+        <br>
+
+        <button class="reset" onclick="resetPlate()">Reset</button>
+
+    </div>
+
+    <script>
+
+        function changeBox(color) {
+            document.getElementById("nameplate")
+            .style.backgroundColor = color;
+        }
+
+        function changeTextColor(color) {
+            document.getElementById("nameplate")
+            .style.color = color;
+        }
+
+        function changeFont(font) {
+            document.getElementById("plateText")
+            .style.fontFamily = font;
+        }
+
+        document.getElementById("nameInput")
+        .addEventListener("input", function() {
+
+            document.getElementById("plateText")
+            .innerText = this.value || "Your Name";
+
+        });
+
+        function resetPlate() {
+
+            document.getElementById("nameplate")
+            .style.backgroundColor = "blue";
+
+            document.getElementById("nameplate")
+            .style.color = "white";
+
+            document.getElementById("plateText")
+            .style.fontFamily = "Arial";
+
+            document.getElementById("nameInput").value = "";
+
+            document.getElementById("plateText")
+            .innerText = "Your Name";
+        }
+
+    </script>
+
+</body>
+</html>
